@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: fit-content;
+}
+
+@layer components {
+    .section_padding {
+        margin: auto 6.375rem;
+    }
+} 
+
+
+
+ul li:nth-child(n) {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    margin-right:  26px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+ul li:nth-child(4){
+    margin-right: 0;
+}
+
+.mobile_nav ul li:hover{
+    background-color: aqua;
+}
+
+.mobile_nav ul li{
+    line-height: 45px;
+    margin: 0;
+}
+
