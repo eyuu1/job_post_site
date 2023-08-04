@@ -50,3 +50,7 @@ ul li:nth-child(4){
 .borderStyle{
     border: 1px solid #00917C;
 }
+
+a{
+    text-decoration: none;
+}

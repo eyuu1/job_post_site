@@ -1,12 +1,12 @@
 import React from 'react'
 import RecentJobsCard from './RecentJobsCard'
-import { jobDescription } from '../../constants/index.js'
+import { jobDescription } from '../../constants'
 
 const Recent = () => {
   return (
     <div className=''> 
-        <h1 className='text-[#0B3812] text-[48px] font-semibold text-center  mt-40'>Recent jobs</h1>
-        <div className=' flex justify-center gap-3 ml-0 w-full flex-wrap'>
+        <h1 className='text-[#0B3812]  sm:text-[28px]  md:text-[48px] font-semibold text-center sm:mt-28 md:mb-9 md:mt-40'>Recent jobs</h1>
+        <div className=' flex justify-center gap-3 ml-0 flex-wrap'>
 
           {jobDescription.map((jobDetail, index) => (
           
@@ -14,17 +14,11 @@ const Recent = () => {
             
           ))}
 
-
-
-
-            {/* <RecentJobsCard jobTitle="soft" campany="google" location="adiss ababa, bole" workHour="full time" link="http://localhost:5222" expireDate="2 days left"/>
-
-            <RecentJobsCard jobTitle="software development" campany="google" location="adiss ababa, bole" workHour="full time" link="http://localhost:5222" expireDate="2 days left"/>
-
-            <RecentJobsCard jobTitle="software development" campany="google" location="adiss ababa, bole" workHour="full time" link="http://localhost:5222" expireDate="2 days left"/>
-
-            <RecentJobsCard jobTitle="software development" campany="google" location="adiss ababa, bole" workHour="full time" link="http://localhost:5222" expireDate="2 days left"/> */}
         </div>
+        <div className='text-center'>
+         <button className=' text-white text-sm sm:mt-7 md:mt-9  px-5 py-3  rounded-2xl bg-[#00917C] '>See All Available Jobs</button>
+        </div>
+       
     </div>
   )
 }
