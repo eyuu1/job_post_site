@@ -13,9 +13,8 @@ const Header = () => {
 
 
             <div>
-                <h1 className='text-greenTitle md:text-6xl font-bold leading-normal sm:mt-[53px] sm:text-5xl md:mt-[20vh] mb-[50px] sm:leading-none overflow-hidden'>Find your carrier online</h1>
+                <h1 className='text-greenTitle sm:text-5xl md:text-6xl font-bold  sm:mt-[53px]  md:mt-[20vh] mb-[50px]  overflow-x-clip'>Find your carrier online</h1>
     
-
                 <p className='text-[#0b3812cc] text-lg leading-normal font-medium mb-[39px] max-w-lg'>Discover thousands of job opportunities from top employers and start your journey towards success today</p>
                 <div className='md:flex md:flex-row flex-1 sm:flex-col'>
                     <input type="text" className='w-[20rem] h-[38px] bg-[#D9D9D9] rounded-md px-2 sm:my-1 sm:mx-0 md:mr-[13px] outline-none ' placeholder='Job category or title'/>

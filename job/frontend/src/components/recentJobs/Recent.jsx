@@ -6,7 +6,7 @@ const Recent = () => {
   return (
     <div className=''> 
         <h1 className='text-[#0B3812]  sm:text-[28px]  md:text-[48px] font-semibold text-center sm:mt-28 md:mb-9 md:mt-40'>Recent jobs</h1>
-        <div className=' flex justify-center gap-3 ml-0 flex-wrap'>
+        <div className=' flex justify-center gap-x-10 gap-y-5 ml-0 flex-wrap'>
 
           {jobDescription.map((jobDetail, index) => (
           

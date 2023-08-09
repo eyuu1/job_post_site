@@ -16,8 +16,8 @@ const Nav = () => {
       
 
         <ul className="my-auto flex item-center justify-end  sm:hidden md:flex ">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Jobs</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/jobs">Jobs</a></li>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Contact Us</a></li>
         </ul>  

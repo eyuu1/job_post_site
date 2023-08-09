@@ -1,10 +1,8 @@
 import React from 'react'
 import Nav from './components/Nav'
-import Header from './components/Header'
-import Recent from './components/recentJobs/Recent'
-import JobCategory from './components/jobCategory/JobCategory'
-import Footer from './components/footer'
-
+import Home from './pages/Home'
+import Jobs from './pages/jobs'
+import { Routes, Route} from 'react-router-dom'
 
 
 const App = () => {
@@ -13,15 +11,11 @@ const App = () => {
   return (
 
     <>
-      <Nav/>
-    
-      <Header/>
-
-      <Recent/>
-
-      <JobCategory/>
-
-      <Footer/>
+    <Nav/>
+    <Routes>
+      <Route path='/' element={<Home/>}  />
+      <Route path='jobs' element={<Jobs/>}  />     
+    </Routes>
     </>
 
   )
