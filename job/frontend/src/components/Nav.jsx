@@ -1,7 +1,7 @@
-import React from 'react'
 import logo from '../assets/logo.png'
 import menu from '../assets/hambergermenu.svg'
 import close from '../assets/close.svg'
+import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 
 const Nav = () => {
@@ -16,10 +16,10 @@ const Nav = () => {
       
 
         <ul className="my-auto flex item-center justify-end  sm:hidden md:flex ">
-        <li><a href="/">Home</a></li>
-        <li><a href="/jobs">Jobs</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/jobs">Jobs</NavLink></li>
+        <li><NavLink to="/aboutus">About Us</NavLink></li>
+        <li><NavLink to="/contactus">Contact Us</NavLink></li>
         </ul>  
 
 

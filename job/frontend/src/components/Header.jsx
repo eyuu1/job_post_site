@@ -1,4 +1,3 @@
-import React from 'react'
 import curve_bottom from '../assets/curve_bottom.svg'
 import curve_top from '../assets/curve_top.svg'
 
@@ -11,7 +10,6 @@ const Header = () => {
                 <img src={curve_top} alt="curve design" className='w-[231px] h-[150px] sm:hidden md:flex absolute right-0 ' />
             </div>
 
-
             <div>
                 <h1 className='text-greenTitle sm:text-5xl md:text-6xl font-bold  sm:mt-[53px]  md:mt-[20vh] mb-[50px]  overflow-x-clip'>Find your carrier online</h1>
     
@@ -23,17 +21,10 @@ const Header = () => {
 
                 </div>
             </div>
-    
-        
         </div>
 
         <img src={curve_bottom} alt="curve design" className='w-[231px] h-[150px] sm:hidden md:flex absolute left-[-10px] bottom-1 ' />
-
-        
-
     </div>
-
-
   )
 }
 

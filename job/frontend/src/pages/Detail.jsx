@@ -1,16 +1,43 @@
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { jobDescription } from '../constants';
+import Description from '../components/Detail/Description';
+import Header from '../components/Detail/Header';
+import Suggested from '../components/Detail/Suggested';
 
+const Detail = () => {
+  const { jobId } = useParams();
+  const navigate = useNavigate();
 
-const jobs = () => {
-  return (
-    <div className='flex flex-col '>
+  const job = jobDescription.find((job) => job.id == jobId);
 
-        <div className='flex justify-center sm:px-[4rem] md:px-[8rem] flex-wrap gap-x-2 sm:mt-10 md:mt-20       '>
-            <input type="text" className='flex  sm:min-w-[16rem] md:min-w-[14rem] h-10 bg-[#D9D9D9] rounded-md px-2 py-2    sm:my-1 sm:mx-0 md:mr-[13px] outline-none ' placeholder='Job category or title'/>
-            <input type="text" className=' sm:min-w-[16rem] md:min-w-[14rem] h-10 bg-[#D9D9D9] rounded-md px-2  sm:my-1  outline-none' placeholder='Location'/>
-                <button className='  text-white  text-lg  w-[140px] h-10 rounded-xl bg-[#00917C] text-center item-center mx-2  sm:my-1 '>Search</button>
+  useEffect(() => {
+    if (job === undefined) {
+      navigate('/');
+    }
+  }, [job, navigate]);
+
+  if (job !== undefined) {
+    return (
+      <div>
+        <Header />
+        <div className="flex justify-start items-start w-full justify-between px-24 py-16">
+          <Description
+            id={job.id}
+            jobTitle={job.jobTitle}
+            company={job.company}
+            location={job.location}
+            workHour={job.workHour}
+            link={job.link}
+            expireDate={job.expireDate}
+          />
+          <Suggested />
         </div>
-    </div>
-  )
-}
+      </div>
+    );
+  }
 
-export default jobs
+  return null;
+};
+
+export default Detail;
