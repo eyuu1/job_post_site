@@ -17,18 +17,16 @@ import more from '../assets/more.png'
 
 export const jobDescription = [
     {
-    id: "1",
     jobTitle: "software development",
     campany: "google",
     location: "addis ababa, bole",
     workHour: "full time",
-    link: "1",
+    link: "http://localhost:5222",
     expireDate: "2 days left",
-    }, 
+    },
 
 
     {
-    id: "2",
     jobTitle: "data analysis ",
     campany: "amazon",
     location: "new york",
@@ -39,7 +37,6 @@ export const jobDescription = [
 
 
     {
-    id: "3",
     jobTitle: "senior network engineer",
     campany: "amazon",
     location: "new york",
@@ -50,49 +47,6 @@ export const jobDescription = [
 
 
     {
-    id: "4",
-    jobTitle: "data analysis",
-    campany: "amazon",
-    location: "new york",
-    workHour: "part-time",
-    link: "http://localhost:5222",
-    expireDate: "1 days left",
-    },
-    {
-    id: "1",
-    jobTitle: "software development",
-    campany: "google",
-    location: "addis ababa, bole",
-    workHour: "full time",
-    link: "1",
-    expireDate: "2 days left",
-    }, 
-
-
-    {
-    id: "2",
-    jobTitle: "data analysis ",
-    campany: "amazon",
-    location: "new york",
-    workHour: "part-time",
-    link: "http://localhost:5222",
-    expireDate: "1 days left",
-    },
-
-
-    {
-    id: "3",
-    jobTitle: "senior network engineer",
-    campany: "amazon",
-    location: "new york",
-    workHour: "part-time",
-    link: "http://localhost:5222",
-    expireDate: "1 days left",
-    },
-
-
-    {
-    id: "4",
     jobTitle: "data analysis",
     campany: "amazon",
     location: "new york",
