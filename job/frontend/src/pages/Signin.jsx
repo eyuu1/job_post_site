@@ -68,7 +68,7 @@ const Signin = () => {
                                             <div class="ml-3">
                                                 <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                                                     Don't have an account yet?
-                                                    <a class="text-blue-600 decoration-2 hover:underline font-medium ml-2" href="../examples/html/signup.html">
+                                                    <a class="text-blue-600 decoration-2 hover:underline font-medium ml-2" href="http://localhost:5173/signup">
                                                         Sign up here
                                                     </a>
                                                 </p>
