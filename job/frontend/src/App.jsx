@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,7 +29,7 @@ function App() {
       </Routes>
     </BrowserRouter> 
 
-    // <Signup/>
+ 
   )
 }
 

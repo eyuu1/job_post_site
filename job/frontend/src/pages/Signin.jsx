@@ -1,6 +1,73 @@
 import React from 'react'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
+
+    const navigate = useNavigate();
+    const [values, setValues] = useState({
+        email: "",
+        password: "",
+    });
+
+    const [found , setFound] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const url = "http://localhost:8080/api/v1/campany/retrive";
+        
+    
+            const response= fetch("http://localhost:8080/api/v1/campany/retrive" ).then(res => {
+                if(!res.ok){
+                    console.log("error found")
+                }
+                return res.json();
+            }).then(datas => {
+                datas.forEach(data => {
+                    if(values.email===data.email){
+                        
+                    setFound(true);
+                    }
+                });
+                    
+                
+            }).catch(error => {
+                console.log(error);
+            })
+
+            
+        // try {
+        //     fetch(url, {
+        //         method: 'GET',
+        //         headers: { "content-type": "application/json" },
+        //         body: JSON.stringify(values)
+    
+        //     }).then((res) => {
+        //         if(res.ok){
+        //         alert("sucessfully registered")
+        //         navigate("/signin")
+        //         }
+        //         else{
+        //             alert("campany already exist. please sign in")
+        //         }
+            
+        //     })
+
+        // } catch (error) {
+        //     console.log(error);
+            
+        // }
+           
+        
+
+    }
+
+    const onchange = (e) => {
+        setValues({...values , [e.target.name]: e.target.value})
+    }
+    console.log(values);
+
     return (
 
         <div class="h-full">
@@ -14,6 +81,9 @@ const Signin = () => {
                             </div>
 
                             <div class="mt-5">
+
+                               {/* sign in with google will be added here */}
+
                                 {/* <button type="button" class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
                                     <svg class="w-4 h-auto" width="46" height="47" viewBox="0 0 46 47" fill="none">
                                         <path d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z" fill="#4285F4" />
@@ -27,13 +97,13 @@ const Signin = () => {
                                 {/* <div class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">Or</div> */}
 
                                 {/* form */}
-                                <form>
+                                <form onSubmit={handleSubmit}>
                                     <div class="grid gap-y-4">
                                         {/* Form Group  */}
                                         <div>
                                             <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
                                             <div class="relative">
-                                                <input type="email" id="email" placeholder='Enter email' name="email" required className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" />
+                                                <input type="email" id="email" placeholder='Enter email' name="email" onChange={onchange} required className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" />
                                                 <div class="flex absolute inset-y-0 right-0 items-center pointer-events-none pr-3">
                                                     <svg class="h-5 w-5 text-red-500 hidden" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
@@ -51,7 +121,7 @@ const Signin = () => {
                                                 <a class="text-sm text-blue-600 decoration-2 hover:underline font-medium" href="../examples/html/recover-account.html">Forgot password?</a>
                                             </div>
                                             <div class="relative">
-                                                <input type="password" id="password" placeholder='*****' name="password" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" required aria-describedby="password-error" />
+                                                <input type="password" id="password" placeholder='*****' name="password" onChange={onchange} class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" required aria-describedby="password-error" />
                                                 <div class=" absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
                                                     <svg class="h-5 w-5 text-red-500 hidden" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
@@ -62,7 +132,7 @@ const Signin = () => {
                                         </div>
                                         {/* End Form Group  */}
 
-                                        {/* Checkbox  */}
+
                                         <div class="flex items-center">
 
                                             <div class="ml-3">
@@ -74,10 +144,12 @@ const Signin = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                        {/* End Checkbox  */}
 
                                         <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Sign in</button>
+
                                     </div>
+
+
                                 </form>
                                 {/* End Form */}
                             </div>
@@ -85,6 +157,7 @@ const Signin = () => {
                     </div>
                 </div>
             </div>
+           
         </div>
 
 
