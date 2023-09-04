@@ -21,7 +21,7 @@ const Detail = () => {
     return (
       <div>
         <Header />
-        <div className="flex justify-start items-start w-full justify-between px-24 py-16">
+        <div className="flex  items-start w-full justify-between px-24 py-16">
           <Description
             id={job.id}
             jobTitle={job.jobTitle}

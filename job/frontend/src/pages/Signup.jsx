@@ -90,14 +90,18 @@ const Signup = () => {
                 }
                 else{
                     alert("campany already exist. please sign in")
+                    navigate("/signin")
                 }
             
             })
 
-        } catch (error) {
-            console.log(error);
-            
+        } catch(error){
+                 alert("try again server connection error");
         }
+            
+       
+            
+        
 
 
 

@@ -17,6 +17,7 @@ import more from '../assets/more.png'
 
 export const jobDescription = [
     {
+    id: 1,
     jobTitle: "software development",
     campany: "google",
     location: "addis ababa, bole",
@@ -27,6 +28,7 @@ export const jobDescription = [
 
 
     {
+    id: 2,
     jobTitle: "data analysis ",
     campany: "amazon",
     location: "new york",
@@ -37,6 +39,7 @@ export const jobDescription = [
 
 
     {
+    id: 3,
     jobTitle: "senior network engineer",
     campany: "amazon",
     location: "new york",
@@ -47,6 +50,7 @@ export const jobDescription = [
 
 
     {
+    id: 4,
     jobTitle: "data analysis",
     campany: "amazon",
     location: "new york",

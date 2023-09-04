@@ -16,8 +16,7 @@ const Signin = () => {
         e.preventDefault();
 
         const url = "http://localhost:8080/api/v1/campany/retrive";
-        
-    
+
             const response= fetch("http://localhost:8080/api/v1/campany/retrive" ).then(res => {
                 if(!res.ok){
                     console.log("error found")
@@ -30,35 +29,16 @@ const Signin = () => {
                     setFound(true);
                     }
                 });
-                    
+                 
+                {found && navigate("/createJob")}
+            
                 
             }).catch(error => {
                 console.log(error);
+                alert("server error")
             })
 
-            
-        // try {
-        //     fetch(url, {
-        //         method: 'GET',
-        //         headers: { "content-type": "application/json" },
-        //         body: JSON.stringify(values)
-    
-        //     }).then((res) => {
-        //         if(res.ok){
-        //         alert("sucessfully registered")
-        //         navigate("/signin")
-        //         }
-        //         else{
-        //             alert("campany already exist. please sign in")
-        //         }
-            
-        //     })
-
-        // } catch (error) {
-        //     console.log(error);
-            
-        // }
-           
+        
         
 
     }

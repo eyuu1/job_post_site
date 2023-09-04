@@ -10,16 +10,17 @@ const Nav = () => {
 
   return (
     <>
-    <nav className="bg-primary flex justify-between lg:px-[6.375rem] md:px-[4rem] sm:px-[2rem] w-full py-2 ">
+    <nav className="bg-primary fixed z-10 flex justify-between lg:px-[6.375rem] md:px-[4rem] sm:px-[2rem] w-full py-2 ">
 
       <img src={logo} className='md:w-[57px] md:h-[46px] sm:w-[37px] sm:h-[26px] my-auto justify-start' alt="logo image" />
       
 
-        <ul className="my-auto flex item-center justify-end  sm:hidden md:flex ">
+        <ul className="my-auto flex item-center flex-wrap justify-end  sm:hidden md:flex ">
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/jobs">Jobs</NavLink></li>
         <li><NavLink to="/aboutus">About Us</NavLink></li>
         <li><NavLink to="/contactus">Contact Us</NavLink></li>
+        <li><NavLink to="/signup" className="text-md text-black ml-1 px-1 bg-white border-amber-800">Post Job</NavLink></li>
         </ul>  
 
 

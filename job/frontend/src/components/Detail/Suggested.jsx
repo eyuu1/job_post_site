@@ -7,7 +7,7 @@ const Suggested = () => {
 
   return (
     <div className="flex flex-col flex-wrap space-y-4">
-      <h3>Related Jobs</h3>
+      <h3 className=' font-medium'>Related Jobs</h3>
       {slicedJobDescription.map(jobDetail => (
         <RecentJobsCard
           key={jobDetail.id}
