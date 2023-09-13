@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { jobDescription } from '../constants';
 import Description from '../components/Detail/Description';
@@ -9,27 +9,59 @@ const Detail = () => {
   const { jobId } = useParams();
   const navigate = useNavigate();
 
-  const job = jobDescription.find((job) => job.id == jobId);
 
-  useEffect(() => {
-    if (job === undefined) {
-      navigate('/');
-    }
-  }, [job, navigate]);
+  // {
+  //   id: "",
+  //   title: "",
+  //   description: "",
+  //   location: "",
+  //   jobType: "",
+  //   url: ""
+  // }
+  const [job , setJob] = useState([]);
 
-  if (job !== undefined) {
+  // const job = jobDescription.find((job) => job.id == jobId);
+  const url = `http://localhost:8080/api/v1/job/${jobId}`;
+
+          useEffect(()=> {
+            const response= fetch(url).then(res => {
+              if(!res.ok){
+                  console.log("error found")
+              }
+              return res.json();
+          }).then(Job => {
+            Job.forEach(jobdetail => {
+              setJob(jobdetail)
+            });
+  
+            //  alert("sucess");
+            
+             
+
+          }).catch(error => {
+              console.log(error);
+              alert("server error")
+          })
+          } , [jobId])
+
+        
+
+
+  if (job !== "") {
     return (
       <div>
         <Header />
         <div className="flex  items-start w-full justify-between px-24 py-16">
           <Description
             id={job.id}
-            jobTitle={job.jobTitle}
-            company={job.company}
+            jobTitle={job.title}
+            description = {job.description}
+            // company={job.company}
             location={job.location}
-            workHour={job.workHour}
-            link={job.link}
-            expireDate={job.expireDate}
+            jobType={job.jobType}
+            link={job.url}
+            // expireDate={job.expireDate}
+
           />
           <Suggested />
         </div>

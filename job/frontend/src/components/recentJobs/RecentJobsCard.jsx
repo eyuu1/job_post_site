@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import editIcon from '../../assets/edit_icon.svg'
 import clockImg from '../../assets/clock.svg'
 
-const RecentJobsCard = ({ id, jobTitle, campany, location, workHour, link, expireDate }) => {
+const RecentJobsCard = ({ id, jobTitle, jobType,  campany, location, link, expireDate }) => {
   return (
     <div className="flex borderStyle flex-row gap-1 flex-grow  p-2">
       <div>
@@ -25,7 +25,7 @@ const RecentJobsCard = ({ id, jobTitle, campany, location, workHour, link, expir
         <div className="flex flex-row justify-between items-end sm:mt-2 md:mt-4">
           <div className="flex flex-col">
             <p className="text-[#184D47] sm:text-[12px] md:text-[14px] lg:text-base font-medium">{campany}</p>
-            <p className="text-[#184D47] sm:text-[12px] md:text-[14px] lg:text-base font-medium">{workHour}</p>
+            <p className="text-[#184D47] sm:text-[12px] md:text-[14px] lg:text-base font-medium">{jobType}</p>
             <span className="text-[#184D47] sm:text-[12px] md:text-[14px] lg:text-base font-medium">{location}</span>
           </div>
 

@@ -112,7 +112,7 @@ const Signup = () => {
 // console.log(values);
     return (
 
-        <div className=' bg-gray-100 max-w-md flex flex-col mx-auto mt-10 p-6 '>
+        <div className=' bg-gray-100 max-w-md flex flex-col mx-auto mt-20 p-6 '>
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white text-center mb-4">Sign up</h1>
 
             <form action='' onSubmit={handleSubmit}>

@@ -1,7 +1,24 @@
 import { jobDescription } from '../constants'
 import PaginatedItems from '../components/Job/Paginate'
+import { useState, useEffect } from 'react'
+
 
 const jobs = () => {
+  const [jobRecords, setJobRecords] = useState([]);
+
+  useEffect(() => {
+    const url = "http://localhost:8080/api/v1/job/retrive";
+    fetch(url).then((result) => result.json()).then((jobs) => {
+      setJobRecords(jobs);
+    }
+    ).catch(err => {
+      console.log(err);
+    })
+  },[]);
+
+
+  // console.log(jobRecords);
+
   return (
     <div className='flex flex-col '>
       <div className='flex justify-center sm:px-[4rem] md:px-[8rem] flex-wrap gap-x-2 sm:mt-10 md:mt-20       '>
@@ -10,7 +27,7 @@ const jobs = () => {
         <button className='  text-white  text-lg  w-[140px] h-10 rounded-xl bg-[#00917C] text-center item-center mx-2  sm:my-1 '>Search</button>
       </div>
       <div>
-        <PaginatedItems data={jobDescription} />
+        <PaginatedItems data={jobRecords} />
       </div>
     </div>
   )
