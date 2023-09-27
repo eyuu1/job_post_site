@@ -11,6 +11,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CreateJob from './pages/createJob';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
+import EmpSignup from './pages/EmpSignup';
+import EmpSignin from './pages/EmpSignin';
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="emp_signup" element={<EmpSignup />} />
+          <Route path="emp_signin" element={<EmpSignin />} />
         </Route>
       </Routes>
     </BrowserRouter> 

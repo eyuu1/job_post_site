@@ -10,14 +10,7 @@ const Detail = () => {
   const navigate = useNavigate();
 
 
-  // {
-  //   id: "",
-  //   title: "",
-  //   description: "",
-  //   location: "",
-  //   jobType: "",
-  //   url: ""
-  // }
+
   const [job , setJob] = useState([]);
 
   // const job = jobDescription.find((job) => job.id == jobId);
@@ -51,7 +44,7 @@ const Detail = () => {
     return (
       <div>
         <Header />
-        <div className="flex  items-start w-full justify-between px-24 py-16">
+        <div className="flex  w-full  px-24 py-16">
           <Description
             id={job.id}
             jobTitle={job.title}
@@ -63,7 +56,7 @@ const Detail = () => {
             // expireDate={job.expireDate}
 
           />
-          <Suggested />
+          {/* <Suggested /> */}
         </div>
       </div>
     );

@@ -22,8 +22,8 @@
 
 
 
-ul li:nth-child(n) {
-    color: #FFF;
+.navListStyle li:nth-child(n) {
+    color: #ffffff;
     font-family: Inter;
     font-size: 16px;
     font-weight: 500;
@@ -33,7 +33,11 @@ ul li:nth-child(n) {
     text-decoration: none;
 }
 
-ul li:nth-child(4){
+.navListStyle li:hover{
+    color: #d1a5cd;
+}
+
+.navListStyle li:nth-child(5){
     margin-right: 0;
 }
 
@@ -67,3 +71,22 @@ a{
 #signupInput:invalid[focused="true"] ~ #signupError {
     display: block;
 }
+
+#empSignupInput:invalid[focused="true"] {
+    border: 1px solid red;
+}
+
+#empSignupInput:invalid[focused="true"] ~ #signupError {
+    display: block;
+}
+
+.displaylist li{
+    display: list-item;
+    /* background-color: #00917C; */
+    list-style-type: circle;
+    /* list-style: lower-alpha; */
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+

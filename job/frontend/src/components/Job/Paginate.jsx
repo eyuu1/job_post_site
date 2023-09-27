@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
+// import ReactPaginate from 'react-paginate';
 import RecentJobsCard from '../recentJobs/RecentJobsCard';
-import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid'
+// import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid'
 
 
 export default function PaginatedItems(props) {
