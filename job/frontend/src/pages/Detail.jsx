@@ -7,7 +7,6 @@ import Suggested from '../components/Detail/Suggested';
 
 const Detail = () => {
   const { jobId } = useParams();
-  const navigate = useNavigate();
 
   const job = jobDescription.find((job) => job.id == jobId);
 
