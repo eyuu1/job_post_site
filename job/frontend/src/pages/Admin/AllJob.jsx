@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AllJob = () => {
 
     const [jobs, setJob] = useState([]);
+
+    useEffect(() => {
+        const url = "http://localhost:8080/api/v1/job/retrive";
+        fetch(url).then((result) => result.json()).then((jobs) => {
+            setJob(jobs);
+        }
+        ).catch(err => {
+          console.log(err);
+        })
+      },[]);
 
     const deleteJob = async (jobId) => {
     };
