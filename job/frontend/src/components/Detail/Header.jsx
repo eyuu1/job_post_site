@@ -1,8 +1,8 @@
 
 const Header = () => {
   return (
-    <div>
-      <h1 className='text-center text-greenTitle sm:text-3xl md:text-4xl font-bold  sm:mt-[53px]  md:mt-[20vh] mb-[50px]  overflow-x-clip'>Unlock Your Career Potential</h1>
+    <div className="">
+      <h1 className='text-center text-greenTitle  sm:text-3xl md:text-4xl font-bold  sm:mt-[53px]  md:mt-[20vh] mb-[50px]  overflow-x-clip'>Unlock Your Career Potential</h1>
       <div className='flex flex-col '>
 
         <div className='flex justify-center sm:px-[4rem] md:px-[8rem] flex-wrap gap-x-2 sm:mt-10 md:mt-20'>

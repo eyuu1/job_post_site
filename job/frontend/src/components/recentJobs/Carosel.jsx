@@ -1,9 +1,27 @@
-import Carousel from 'react-multi-carousel';
-import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid'
+// import Carousel from 'react-multi-carousel';
+// import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid'
 import RecentJobsCard from './RecentJobsCard'
 import { jobDescription } from '../../constants'
+import { useState , useEffect } from 'react';
 
 const Carosel = () => {
+
+  const [jobRecords, setJobRecords] = useState([]);
+  const index=0;
+
+  useEffect(() => {
+    const url = "http://localhost:8080/api/v1/job/retrive";
+    fetch(url).then((result) => result.json()).then((jobs) => {
+        setJobRecords(jobs);
+    }
+    ).catch(err => {
+      console.log(err);
+    })
+  },[]);
+
+
+
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -23,9 +41,9 @@ const Carosel = () => {
     }
   };
   return (
-    <div className='w-screen'>
-      <h1 className='text-[#0B3812]  sm:text-[28px]  md:text-[48px] font-semibold text-center sm:mt-16 md:mt-28'>Recent jobs</h1>
-      <Carousel
+    <div className='w-screen '>
+      <h1 className='text-[#0B3812]  sm:text-[28px]  md:text-[48px] font-semibold text-center sm:mt-16 md:mt-40'>Recent jobs</h1>
+      {/* <Carousel
         arrows
         containerClass="carousel-container p-4 md:px-8 md:py-12 w-screen"
 
@@ -57,20 +75,26 @@ const Carosel = () => {
 
         responsive={responsive}
 
-      >
-        {jobDescription.map((jobDetail) => (
+      > */}
+       
+        <div className='grid grid-cols-2 gap-2 mx-14 md:mt-8'>
+        {jobRecords.map((jobDetail) => (
           <RecentJobsCard
             key={jobDetail.id}
             id={jobDetail.id}
-            jobTitle={jobDetail.jobTitle}
-            company={jobDetail.campany}
+            jobTitle={jobDetail.title}
+            // company={jobDetail.campany}
             location={jobDetail.location}
-            workHour={jobDetail.workHour}
-            link={jobDetail.link}
-            expireDate={jobDetail.expireDate}
+            workHour={jobDetail.jobType}
+            // link={jobDetail.link}
+            // expireDate={jobDetail.expireDate}
           />
-        ))}
-      </Carousel>
+        )) }
+        </div>
+        
+
+    
+      {/* </Carousel> */}
       <div className='text-center'>
         <button className=' text-white text-sm sm:mt-7 md:mt-9  px-5 py-3  rounded-2xl bg-[#00917C] '>See All Available Jobs</button>
       </div>

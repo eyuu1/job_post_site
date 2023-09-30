@@ -8,6 +8,12 @@ import Contact from './pages/Contact'
 import Detail from "./pages/Detail"
 import PageNotFound from './pages/PageNotFound';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CreateJob from './pages/createJob';
+import Signin from './pages/Signin';
+import Signup from './pages/Signup';
+import EmpSignup from './pages/EmpSignup';
+import EmpSignin from './pages/EmpSignin';
+
 
 function App() {
   return (
@@ -19,10 +25,17 @@ function App() {
           <Route path="jobs/:jobId" element={<Detail />} />
           <Route path="aboutus" element={<About />} />
           <Route path="contactus" element={<Contact />} />
+          <Route path="createJob" element={<CreateJob />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="signin" element={<Signin />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="emp_signup" element={<EmpSignup />} />
+          <Route path="emp_signin" element={<EmpSignin />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> 
+
+ 
   )
 }
 
