@@ -13,6 +13,8 @@ import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import EmpSignup from './pages/EmpSignup';
 import EmpSignin from './pages/EmpSignin';
+import Dashboard from './pages/Dashboard';
+import AdminDashboard from './pages/AdminDashboard';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
           <Route path="aboutus" element={<About />} />
           <Route path="contactus" element={<Contact />} />
           <Route path="createJob" element={<CreateJob />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="admindashboard" element={<AdminDashboard />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
