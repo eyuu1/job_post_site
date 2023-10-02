@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const EmpSignup = () => {
 
-
+    const navigate = useNavigate();
     // const [employe , setEmploye] = useState({
     //     name: "",
     //     email: "",
@@ -18,10 +19,35 @@ const EmpSignup = () => {
     const [cPassword, setCpassword] = useState('');
     const [cv, setCv] = useState('');
 
+
+
     let employee = { "firstName": fname, "lastName": lname, "email": email, "password": password, "cv":cv }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
+
+        const url = "http://localhost:8080/api/v1/jobseekers/add";
+        try {
+            fetch(url, {
+                method: 'POST',
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(employee)
+    
+            }).then((res) => {
+                if(res.ok){
+                alert("sucessfully registered")
+                navigate("/emp_signin")
+                }
+                else{
+                    alert("user already exist. please sign in")
+                    navigate("/signin")
+                }
+            
+            })
+
+        } catch(error){
+                 alert("try again server connection error");
+        }
     };
 
     console.log(employee)
@@ -122,13 +148,13 @@ const EmpSignup = () => {
                     <div className="flex items-center justify-between">
                         <button
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
+                            type="submit"
                         >
                             Sign Up
                         </button>
                         <a
                             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                            href="#"
+                            href="http://localhost:5173/emp_signin"
                         >
                             Already have an account? Sign in.
                         </a>

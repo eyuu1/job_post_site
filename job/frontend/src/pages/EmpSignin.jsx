@@ -1,16 +1,44 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const EmpSignin = () => {
 
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [found , setFound] = useState(false);
 
 
   let employee = { "email": email, "password": password }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const url = "http://localhost:8080/api/v1/jobseekers/retrive";
+
+    const response = fetch(url).then(res => {
+      if (!res.ok) {
+        console.log("error found")
+      }
+      return res.json();
+    }).then(datas => {
+      datas.forEach(data => {
+        if (employee.email === data.email && employee.password === data.password) {
+
+          setFound(true);
+        }
+      });
+
+      { found && navigate("/createJob") }
+
+
+    }).catch(error => {
+      console.log(error);
+      alert("server error")
+    })
+
   };
 
   // console.log(employee)
@@ -55,7 +83,7 @@ const EmpSignin = () => {
           <div className="flex flex-col justify-between">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              type="submit"
             >
               Sign In
             </button>

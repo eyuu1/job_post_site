@@ -1,11 +1,24 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 const AllCompany = () => {
 
     const [companies, setComapny] = useState([]);
 
 
+    useEffect(() => {
+        const url = "http://localhost:8080/api/v1/campany/retrive";
+        fetch(url).then((result) => result.json()).then((campany) => {
+            setComapny(campany);
+        }
+        ).catch(err => {
+          console.log(err);
+        })
+      },[]);
+
+
     const deleteCompany = async (companyId) => {
+        
     };
     return (
         <div>
