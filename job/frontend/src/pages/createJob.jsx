@@ -20,15 +20,13 @@ const createJob = () => {
  
   const theme = 'snow';
 
-  const [jobValues , setjobValues] = useState({
-    title: "",
-    description: "",
-    location: "",
-    jobType: "",
-    // category: ,
-    url: ""
-});
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [location , setLocation] = useState('');
+  const [jobType , setJobType] = useState('');
+  const [url , setUrl] = useState('');
 
+  let jobvalues = { "title": title, "description": description , "location": location , "jobType": jobType , "url": url , "status": "pending" }
 
   const { quill, quillRef } = useQuill({theme, modules, placeholder});
 
@@ -36,17 +34,23 @@ const createJob = () => {
     if (quill) {
       quill.on('text-change', () => {
 
-        setjobValues({...jobValues , description: quillRef.current.firstChild.innerHTML})
+        setDescription(quillRef.current.firstChild.innerHTML);
       });
     }
   }, [quill]);
 
 
+//   const [jobValues , setjobValues] = useState({
+//     title: "",
+//     description: desc,
+//     location: "",
+//     jobType: "",
+//     // category: ,
+//     url: ""
+// });
 
 
-const onchange = (e)=>{
-  setjobValues({ ...jobValues , [e.target.name]: e.target.value })
-}
+
 
 // console.log(jobValues.description)
   const asyncPostCall = async (e) => {
@@ -57,7 +61,7 @@ const onchange = (e)=>{
       const config = {
         method: 'POST',
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(jobValues)
+        body: JSON.stringify(jobvalues)
     }
 
     const response = await fetch(url , config);
@@ -73,7 +77,7 @@ const onchange = (e)=>{
     }
 }
 
-console.log(jobValues);
+console.log(jobvalues);
 
   return (
     <div className='section_margin mr-40 mt-20  flex flex-col bg-[#d6e9e9]   justify-start rounded-lg '>
@@ -82,20 +86,20 @@ console.log(jobValues);
         <form action="" onSubmit={asyncPostCall} className='mt-10 '>
           
           <label htmlFor='title' className=' mt-20'>Job Title*</label>
-          <input type="text" name='title' className='border-2  w-full outline-none p-2 rounded-md text-sm' required onChange={onchange} />
+          <input type="text" name='title' className='border-2  w-full outline-none p-2 rounded-md text-sm' required onChange={(e) => setTitle(e.target.value)} />
         
 
 
           <div className='mt-4'>
           <label htmlFor='location' className='mt-4'>Location*</label>
-          <input type="text" name='location' className='border-2  w-full outline-none p-2 rounded-md text-sm' required onChange={onchange} />
+          <input type="text" name='location' className='border-2  w-full outline-none p-2 rounded-md text-sm' required onChange={(e) => setLocation(e.target.value)} />
           </div>
 
 
           <div className='mt-4'>
           <label htmlFor='description' className='mt-20'>Description*</label>
           <div style={{ width: 600, height: 300 ,  display: 'flex', flexDirection: 'column' , border: '2px solid white' , background: '#FFFF' , outline: '0px solid transparent', outlineOffset: '2px' , borderRadius:'6px'}}>
-            <div name="description" ref={quillRef} onChange={onchange}/>
+            <div name="description" ref={quillRef}/>
           </div>
           
           {/*
@@ -106,7 +110,7 @@ console.log(jobValues);
           <div className='mt-4'>
           <label htmlFor='jobType' className='mt-4 mb-1'>Job Type*</label>
           </div>
-          <select id="type" name='jobType' className='p-2 rounded-md block mt-2' onChange={onchange}>
+          <select id="type" name='jobType' className='p-2 rounded-md block mt-2' onChange={(e) => setJobType(e.target.value)}>
             <option value="">--Please choose job type--</option>
             <option value="fullTime">Full-time</option>
             <option value="partTime">Part-time</option>
@@ -116,7 +120,7 @@ console.log(jobValues);
           <div className='mt-4'>
           <label htmlFor='cat' className='mt-4 mb-1'>Job Category*</label>
           </div>
-          <select id="category" name='cat' className='p-2 rounded-md block mt-2' onChange={onchange}>
+          <select id="category" name='cat' className='p-2 rounded-md block mt-2' >
             <option value="">select job category</option>
             <option value="1">IT</option>
             <option value="2">Accounting and finance</option>
@@ -125,7 +129,7 @@ console.log(jobValues);
           
           <div className='mt-4'>
           <label htmlFor='url' className='mt-4'>Application URL*</label>
-          <input type="url" name='url' className='border-2  w-full outline-none p-2 rounded-md text-sm' onChange={onchange} />
+          <input type="url" name='url' className='border-2  w-full outline-none p-2 rounded-md text-sm' onChange={(e) => setUrl(e.target.value)}/>
           </div>
           <button type="submit" class="py-2 px-4 mt-8 text-center  rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none transition-all text-sm">Create Job</button>
 

@@ -15,6 +15,7 @@ import EmpSignup from './pages/EmpSignup';
 import EmpSignin from './pages/EmpSignin';
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import JobDescriptionPopup from './pages/Admin/JobDescriptionPopup';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="emp_signup" element={<EmpSignup />} />
           <Route path="emp_signin" element={<EmpSignin />} />
+          <Route path="descriptionPopup" element={<JobDescriptionPopup />} />
         </Route>
       </Routes>
     </BrowserRouter> 

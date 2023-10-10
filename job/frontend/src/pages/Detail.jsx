@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { jobDescription } from '../constants';
 import Description from '../components/Detail/Description';
 import Header from '../components/Detail/Header';
-import Suggested from '../components/Detail/Suggested';
 
 const Detail = () => {
   const { jobId } = useParams();

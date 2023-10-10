@@ -23,8 +23,8 @@ const Description = ({ id, jobTitle , description , location, jobType, link }) =
       <a href={link} class="py-2 px-4 mt-8 text-center justify-center rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none transition-all text-sm">apply</a>
 
       {/* <h3>{campany}</h3> */}
-      <h3>{location}</h3>
-      <h3>{jobType}</h3>
+      {/* <h3>{location}</h3>
+      <h3>{jobType}</h3> */}
       {/* <h3>{expireDate}</h3> */}
     </div>
   )

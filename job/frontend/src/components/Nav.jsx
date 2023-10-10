@@ -20,7 +20,7 @@ const Nav = () => {
         <li><NavLink to="/jobs">Jobs</NavLink></li>
         <li><NavLink to="/aboutus">About Us</NavLink></li>
         <li><NavLink to="/contactus">Contact Us</NavLink></li>
-        <li><NavLink to="/dashboard" className="mx-2">Dashboard</NavLink></li>
+        {/* <li><NavLink to="/dashboard" className="mx-2">Dashboard</NavLink></li> */}
         <li><NavLink to="/emp_signup">JOB SEEKER</NavLink></li>
         <li><NavLink to="/signup" className="text-sm text-black ml-1 py-1 px-2 items-center block  bg-white rounded font-bold border-amber-800">POST JOB</NavLink></li>
         </ul>  

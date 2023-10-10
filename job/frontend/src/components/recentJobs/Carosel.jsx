@@ -3,14 +3,16 @@
 import RecentJobsCard from './RecentJobsCard'
 import { jobDescription } from '../../constants'
 import { useState , useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Carosel = () => {
 
   const [jobRecords, setJobRecords] = useState([]);
+  const navigate = useNavigate();
   const index=0;
 
   useEffect(() => {
-    const url = "http://localhost:8080/api/v1/job/retrive";
+    const url = "http://localhost:8080/api/v1/job/recentjobs";
     fetch(url).then((result) => result.json()).then((jobs) => {
         setJobRecords(jobs);
     }
@@ -95,8 +97,8 @@ const Carosel = () => {
 
     
       {/* </Carousel> */}
-      <div className='text-center'>
-        <button className=' text-white text-sm sm:mt-7 md:mt-9  px-5 py-3  rounded-2xl bg-[#00917C] '>See All Available Jobs</button>
+      <div className='text-center mt-12  rounded-4xl'>
+        <a href='http://localhost:5173/jobs' className=' text-white text-lg px-5 py-3 hover:bg-green-600 bg-[#00917C] '>See All Available Jobs</a>
       </div>
     </div>
   )

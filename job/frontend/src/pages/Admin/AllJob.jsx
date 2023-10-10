@@ -1,28 +1,101 @@
 import { useState, useEffect } from "react";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import DOMPurify from "dompurify";
+import JobDescriptionPopup from "./JobDescriptionPopup";
 
 const AllJob = () => {
 
-    const [jobs, setJob] = useState([]);
+    const [Jobs, setJobs] = useState([]);
+    const [status , setStatus] = useState("");
+
+    const sanitizedData = (desc) => ({
+        __html: DOMPurify.sanitize(desc)
+      })
+   
+
+
+    useEffect(() => {
+        const url = `http://localhost:8080/api/v1/job/status/${status}`;
+        const conf = {method: 'GET'}
+        fetch(url,conf).then((result) => {
+            return  result.json();
+        }).then((jobs) => {
+            setJobs(jobs);
+            // allJobRef.value="null";
+          
+        }
+        ).catch(err => {
+            console.log(err);
+        })
+    }, [status, Jobs]);
+
+
+
 
     useEffect(() => {
         const url = "http://localhost:8080/api/v1/job/retrive";
         fetch(url).then((result) => result.json()).then((jobs) => {
-            setJob(jobs);
+          setJobs(jobs);
         }
         ).catch(err => {
           console.log(err);
         })
       },[]);
 
-    const deleteJob = async (jobId) => {
+
+
+    const deleteJob = async (jobid) => {
+        fetch(`http://localhost:8080/api/v1/job/${jobid}`, { method: 'DELETE' }).then((response)=>{
+            if(response.ok){
+                // alert("sucessfully deleted")
+            }
+            else{
+                alert("error occurs while deleting")
+            }
+        });
     };
+
+     
+    const updateJob = async(jobid) => {
+        const dataToUpdate = {
+            "id":"",
+            "status": "active"
+        };
+            const jsonString = JSON.stringify(dataToUpdate);
+            const options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json' },
+                body: jsonString };
+
+            const urls = `http://localhost:8080/api/v1/job/updateStatus/${jobid}?status=active`;
+            fetch(urls, options).then((response) => {
+                if(!response.ok){
+                    throw new Error(`http error ${response.status}`);
+                }
+                return response.json();
+                 }).then((updatedData) => {
+                    console.log('data updated ', updatedData);
+                 })
+                .catch(err => {
+                console.error('error updating data' , err);
+            })
+    }
+      
+ 
 
 
     return (
         <div>
             <h1 className='text-[36px] font-bold m-6'>Jobs</h1>
-
-            {jobs != null && jobs.length === 0 ? (
+            <select id="status" name='jobStatus' className='p-2 ml-6 rounded-md border-gray-600 border-2 block mt-2' onChange={(e) =>{setStatus(e.target.value)} }>
+            {/* <option ref={allJobRef}>--FILTER--</option> */}
+            <option value="pending">pending</option>
+            <option value="active" selected>active</option>
+            {/* <option value="internship">Internship</option> */}
+          </select>
+            {Jobs != null && Jobs.length === 0 ? (
                 <p className='text-xl font-medium m-20'>No jobs</p>
             ) : (
               
@@ -46,29 +119,30 @@ const AllJob = () => {
                                     <th className=" border-[#dddddd] border-solid border-[0.2px] text-left p-2">Title</th>
                                     <th className=" border-[#dddddd] border-solid border-[1px] text-left p-2">Description</th>
                                     <th className=" border-[#dddddd] border-solid border-[1px] text-left p-2">Type</th>
-                                    <th className=" border-[#dddddd] border-solid border-[1px] text-left p-2">Cv</th>
+                                    <th className=" border-[#dddddd] border-solid border-[1px] text-left p-2">location</th>
+                                    <th className=" border-[#dddddd] border-solid border-[1px] text-left p-2">Status</th>
                                     <th className=" border-[#dddddd] border-solid border-[1px] text-left p-2">Action</th>
                                 </tr>
 
-                                {jobs.map((job) => (
+                                {Jobs.map((job) => (
                                     <tr>
-                                        <td className=" border-[#dddddd] border-solid border-[1px] text-left p-2 w-52">{job.title}</td>
-                                        <td className=" border-[#dddddd] border-solid border-[1px] text-left w-52 p-2">{job.description}</td>
-                                        <td className=" border-[#dddddd] border-solid border-[1px] text-left w-52 p-2">{job.jobType}</td>
-                                        <td className=" border-[#dddddd] border-solid border-[1px] text-left w-52 p-2">{job.location}</td>
-                                        <td><button type="button" className="bg-red-500  text-white px-2  rounded hover:bg-red-600" onClick={() => deleteUser(job.id)}>Remove</button></td>
-                                    </tr>
-                                ))}
-                            </table>
+                                    <td className=" border-[#dddddd] border-solid border-[1px] text-left p-2 w-52">{job.title}</td>
+                                        <td className=" border-[#dddddd] border-solid border-[1px] text-left w-40 p-2">
+                                            <Popup trigger={<button className=' text-center mx-auto'> click </button>} position="center">
+                                                <div className="" dangerouslySetInnerHTML={sanitizedData(job.description)}></div>
+                                            </Popup></td>
+                                        <td className=" border-[#dddddd] border-solid border-[1px] text-left w-40 p-2">{job.jobType}</td>
+                                    <td className=" border-[#dddddd] border-solid border-[1px] text-left w-40 p-2">{job.location}</td>
+                                    <td className=" border-[#dddddd] border-solid border-[1px] text-left w-40 p-2">{job.status}</td>
+                                    <td className=" border-[#dddddd] border-solid border-[1px] text-left w-40 p-2"><button type="button" className="bg-red-500  text-white px-2  rounded hover:bg-red-600" onClick={() => deleteJob(job.id)}>Remove</button>
+                                {status=="pending" && (<span><button type="button" className=" bg-green-300  text-white px-2  rounded hover:bg-green-500 ml-2" onClick={() => updateJob(job.id)}>+</button></span>)}
+                                </td>
+                            </tr>
+                        ))}
+                    </table>
+                </div>
 
 
-
-
-
-
-                        </div>
-                
-               
             )}
         </div>
     );
