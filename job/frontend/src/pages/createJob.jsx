@@ -112,8 +112,8 @@ console.log(jobvalues);
           </div>
           <select id="type" name='jobType' className='p-2 rounded-md block mt-2' onChange={(e) => setJobType(e.target.value)}>
             <option value="">--Please choose job type--</option>
-            <option value="fullTime">Full-time</option>
-            <option value="partTime">Part-time</option>
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
             <option value="internship">Internship</option>
           </select>
 

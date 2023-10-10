@@ -12,28 +12,35 @@ const Detail = () => {
   const [job , setJob] = useState([]);
 
   // const job = jobDescription.find((job) => job.id == jobId);
-  const url = `http://localhost:8080/api/v1/job/${jobId}`;
 
           useEffect(()=> {
-            const response= fetch(url).then(res => {
-              if(!res.ok){
-                  console.log("error found")
-              }
-              return res.json();
-          }).then(Job => {
-            Job.forEach(jobdetail => {
-              setJob(jobdetail)
-            });
+
+            const url = `http://localhost:8080/api/v1/job/${jobId}`;
+    fetch(url).then((result) => result.json()).then((jobs) => {
+      setJob(jobs);
+    }
+    ).catch(err => {
+      console.log(err);
+    })} , [jobId])
+          //   const response= fetch(url).then(res => {
+          //     if(!res.ok){
+          //         console.log("error found")
+          //     }
+          //     return res.json();
+          // }).then(Job => {
+          //   Job.forEach(jobdetail => {
+          //     setJob(jobdetail)
+          //   });
   
-            //  alert("sucess");
+          //   //  alert("sucess");
             
              
 
-          }).catch(error => {
-              console.log(error);
-              alert("server error")
-          })
-          } , [jobId])
+          // }).catch(error => {
+          //     console.log(error);
+          //     alert("server error")
+          // })
+          // } , [jobId])
 
         
 

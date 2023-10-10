@@ -12,6 +12,7 @@ const Signin = () => {
 
     const [found , setFound] = useState(false);
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -25,7 +26,8 @@ const Signin = () => {
             }).then(datas => {
                 datas.forEach(data => {
                     if(values.email===data.email){
-                        
+                        alert("found");
+                      
                     setFound(true);
                     }
                 });
@@ -47,6 +49,7 @@ const Signin = () => {
         setValues({...values , [e.target.name]: e.target.value})
     }
     console.log(values);
+    console.log(found)
 
     return (
 

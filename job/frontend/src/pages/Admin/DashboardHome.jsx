@@ -66,12 +66,12 @@ const DashboardHome = () => {
 
                 <div className="flex gap-10 mt-10 ">
                     <div className=" bg-slate-300 w-60 h-40 flex flex-col rounded-xl justify-between ">
-                        <p className="flex justify-center mt-10 text-[36px] font-bold">hello</p>
+                        <p className="flex justify-center mt-10 text-[36px] font-bold">4</p>
                     <p className=" flex justify-center font-semibold"> active jobs</p> 
                     </div>
 
                     <div className=" bg-slate-300 w-60 h-40 flex flex-col rounded-xl justify-between ">
-                        <p className="flex justify-center mt-10 text-[36px] font-bold">hello</p>
+                        <p className="flex justify-center mt-10 text-[36px] font-bold">10</p>
                     <p className=" flex justify-center font-semibold"> pending jobs</p> 
                     </div>
 
